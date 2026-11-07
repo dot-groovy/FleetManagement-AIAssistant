@@ -15,8 +15,9 @@ public class EmailService : IEmailService
     // Envia um email com PDF em anexo através do servidor SMTP (MailHog/smtp4dev)
     public async Task SendEmailWithAttachmentAsync(string to, string subject, string body, byte[] attachment, string fileName)
     {
+        var remetente = _config["EmailSettings:Email"] ?? "noreply@gestaofrota.local";
         var email = new MimeMessage();
-        email.From.Add(MailboxAddress.Parse(_config["EmailSettings:Email"] ?? "noreply@gestaofrota.local"));
+        email.From.Add(MailboxAddress.Parse(remetente));
         email.To.Add(MailboxAddress.Parse(to));
         email.Subject = subject;
         var builder = new BodyBuilder { HtmlBody = body };
@@ -33,7 +34,7 @@ public class EmailService : IEmailService
         else
         {
             await smtp.ConnectAsync(host, port, SecureSocketOptions.StartTls);
-            await smtp.AuthenticateAsync(_config["EmailSettings:Email"], password);
+            await smtp.AuthenticateAsync(remetente, password);
         }
         await smtp.SendAsync(email);
         await smtp.DisconnectAsync(true);

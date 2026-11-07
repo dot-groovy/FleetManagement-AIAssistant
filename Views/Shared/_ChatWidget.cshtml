@@ -1,0 +1,23 @@
+<div id="chat-widget" class="chat-widget">
+    <div id="chat-painel" class="chat-painel" hidden>
+        <div class="chat-cabecalho">
+            <span id="chat-titulo">Assistente IA</span>
+            <div class="chat-acoes">
+                <div class="chat-idioma" role="group" aria-label="Idioma / Language">
+                    <button type="button" data-idioma="pt">PT</button>
+                    <button type="button" data-idioma="en">EN</button>
+                </div>
+                <button type="button" id="chat-limpar" class="chat-btn-cabecalho" title="Limpar conversa">Limpar</button>
+                <button type="button" id="chat-fechar" class="chat-btn-cabecalho" aria-label="Fechar">&times;</button>
+            </div>
+        </div>
+        <div id="chat-mensagens" class="chat-mensagens"></div>
+        <form id="chat-form" class="chat-form">
+            @Html.AntiForgeryToken()
+            <input id="chat-input" class="form-control form-control-sm" maxlength="500" autocomplete="off"
+                   placeholder="Pergunte sobre a frota..." required />
+            <button id="chat-enviar" type="submit" class="btn btn-primary btn-sm">Enviar</button>
+        </form>
+    </div>
+    <button id="chat-toggle" type="button" class="chat-toggle">Assistente IA</button>
+</div>

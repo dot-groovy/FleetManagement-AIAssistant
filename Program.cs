@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.AI;
+using OllamaSharp;
 using GestaoFrota.Data;
 using GestaoFrota.Services;
 using QuestPDF.Infrastructure;
@@ -14,6 +16,12 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IEmailService, EmailService>();
+var aiEndpoint = builder.Configuration["AI:Endpoint"] ?? "http://localhost:11434";
+var aiModel = builder.Configuration["AI:Model"] ?? "gpt-oss:120b-cloud";
+builder.Services.AddChatClient(new OllamaApiClient(new Uri(aiEndpoint), aiModel))
+    .UseFunctionInvocation();
+builder.Services.AddScoped<FrotaTools>();
+builder.Services.AddScoped<AssistenteService>();
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
