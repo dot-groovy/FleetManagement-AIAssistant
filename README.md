@@ -1,8 +1,8 @@
-Built a full-stack ASP.NET Core MVC web application to manage drivers, vehicles and maintenance records.  
-Integrated an AI assistant that answers natural-language questions about fleet data using LLM function calling, with read-only, GDPR-aware data access.  
-Implemented role-based access control (Admin/User) with ASP.NET Core Identity.  
-Designed a SQL Server database with EF Core migrations, stored procedures and audit triggers to log deletions.  
-Added PDF report exports with optional email delivery.
+-Built a full-stack ASP.NET Core MVC web application to manage drivers, vehicles and maintenance records.  
+-Integrated an AI assistant that answers natural-language questions about fleet data using LLM function calling, with read-only, GDPR-aware data access.  
+-Implemented role-based access control (Admin/User) with ASP.NET Core Identity.  
+-Designed a SQL Server database with EF Core migrations, stored procedures and audit triggers to log deletions.  
+-Added PDF report exports with optional email delivery.
 
 **AI Assistant:** Users ask questions in natural language and the LLM uses function calling to query the database through predefined, read-only functions. The model never accesses the database directly and personal data is protected, in line with GDPR principles. It runs locally with Ollama.  
 **Authentication & Authorization:** ASP.NET Core Identity with Admin and User roles. Users have limited access.  
