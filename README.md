@@ -9,6 +9,8 @@
 **Database:** SQL Server with Entity Framework Core (code-first migrations), stored procedures for specific queries, and triggers that record every deletion in an audit table (who, what and when).  
 **Reports:** Export data to PDF and optionally send the report by email.
 
+more detail: https://dot-groovy.github.io/portfolio/project/001/
+
 <img src="./prints/print1.jpg" alt="Captura de ecrã do projeto" width="500">
 <img src="./prints/print2.jpg" alt="Captura de ecrã do projeto" width="500">
 <img src="./prints/print3.jpg" alt="Captura de ecrã do projeto" width="500">
